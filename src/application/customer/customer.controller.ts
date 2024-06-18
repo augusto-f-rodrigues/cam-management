@@ -1,25 +1,29 @@
 import {
+  Body,
   Controller,
+  Delete,
   Get,
+  Param,
   Post,
   Put,
-  Delete,
-  Param,
-  Body,
+  UseGuards,
 } from '@nestjs/common';
-import { CustomerService } from './customer.service';
 import { Customer } from 'src/infra/database/entities/customer.entity';
+import { JwtAuthGuard } from '../auth/guard/auth.guard';
+import { CustomerService } from './customer.service';
 
 @Controller('customers')
 export class CustomerController {
   constructor(private readonly customerService: CustomerService) {}
 
   @Get()
+  @UseGuards(JwtAuthGuard)
   async findAll(): Promise<Customer[]> {
     return this.customerService.findAll();
   }
 
   @Get(':id')
+  @UseGuards(JwtAuthGuard)
   async findOne(@Param('id') id: string): Promise<Customer> {
     return this.customerService.findOne(id);
   }
@@ -30,6 +34,7 @@ export class CustomerController {
   }
 
   @Put(':id')
+  @UseGuards(JwtAuthGuard)
   async update(
     @Param('id') id: string,
     @Body() customerData: Partial<Customer>,
@@ -38,6 +43,7 @@ export class CustomerController {
   }
 
   @Delete(':id')
+  @UseGuards(JwtAuthGuard)
   async remove(@Param('id') id: string): Promise<void> {
     return this.customerService.remove(id);
   }
