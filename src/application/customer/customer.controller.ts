@@ -12,7 +12,7 @@ import { Customer } from 'src/infra/database/entities/customer.entity';
 import { JwtAuthGuard } from '../auth/guard/auth.guard';
 import { CustomerService } from './customer.service';
 
-@Controller('customers')
+@Controller('customer')
 export class CustomerController {
   constructor(private readonly customerService: CustomerService) {}
 

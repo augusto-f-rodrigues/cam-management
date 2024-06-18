@@ -1,3 +1,4 @@
+import { AlertLogModule } from './application/alert-log/alert-log.module';
 import { CameraModule } from './application/camera/camera.module';
 import { AuthModule } from './application/auth/auth.module';
 import { CustomerModule } from './application/customer/customer.module';
@@ -9,6 +10,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
+    AlertLogModule,
     CameraModule,
     AuthModule,
     CustomerModule,
