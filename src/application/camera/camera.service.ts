@@ -52,4 +52,13 @@ export class CameraService {
   async remove(id: string): Promise<void> {
     await this.cameraRepository.delete(id);
   }
+
+  async disable(id: string): Promise<Camera> {
+    const camera = await this.cameraRepository.findOne({ where: { id } });
+    if (!camera) {
+      throw new Error('Camera not found');
+    }
+    camera.isEnabled = false;
+    return this.cameraRepository.save(camera);
+  }
 }

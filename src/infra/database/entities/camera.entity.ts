@@ -20,7 +20,7 @@ export class Camera {
   @Column({ length: 126 })
   ip: string;
 
-  @Column({ name: 'is_enabled' })
+  @Column({ name: 'is_enabled', default: true })
   isEnabled: boolean;
 
   @ManyToOne(() => Customer, (customer) => customer.cameras)

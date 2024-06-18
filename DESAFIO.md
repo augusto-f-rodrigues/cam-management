@@ -8,7 +8,7 @@ A Gabriel é uma startup focada em proteger pessoas. Com isso, buscamos talentos
 Implementar uma API web, utilizando o padrão REST, para gerenciamento de câmeras dos nossos clientes. Através de sua API deve ser possível:
 
 - Adicionar novas câmeras [edit: OK]
-- Desabilitar uma câmera 
+- Desabilitar uma câmera [edit: OK]
 - Listar as câmeras de um cliente [edit: OK]
 - Registrar ocorrência de alertas [edit: OK]
 - Obter ocorrências de alertas por intervalo de tempo

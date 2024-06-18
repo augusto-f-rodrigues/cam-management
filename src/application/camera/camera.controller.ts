@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  Patch,
   Post,
   Put,
   Request,
@@ -53,5 +54,10 @@ export class CameraController {
   @Delete(':id')
   async remove(@Param('id') id: string): Promise<void> {
     return this.cameraService.remove(id);
+  }
+
+  @Patch(':id/disable')
+  async disable(@Param('id') id: string): Promise<Camera> {
+    return this.cameraService.disable(id);
   }
 }
