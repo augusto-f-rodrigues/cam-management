@@ -28,13 +28,18 @@ export class CameraController {
     return this.cameraService.findOne(id);
   }
 
+  @Get('customer/:id')
+  async findByCustomerId(@Param('id') id: string): Promise<Camera[]> {
+    return this.cameraService.findByCustomerId(id);
+  }
+
   @Post()
   async create(
     @Body() cameraData: Partial<Camera>,
     @Request() req,
   ): Promise<Camera> {
-    const userId = req.user.id;
-    return this.cameraService.create(cameraData, userId);
+    const customerId = req.customer.id;
+    return this.cameraService.create(cameraData, customerId);
   }
 
   @Put(':id')

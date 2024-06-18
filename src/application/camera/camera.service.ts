@@ -21,16 +21,25 @@ export class CameraService {
     return this.cameraRepository.findOne({ where: { id } });
   }
 
-  async create(cameraData: Partial<Camera>, userId: string): Promise<Camera> {
-    const user = await this.customerRepository.findOne({
-      where: { id: userId },
+  async findByCustomerId(customerId: string): Promise<Camera[]> {
+    return this.cameraRepository.find({
+      where: { customer: { id: customerId } },
     });
-    if (!user) {
-      throw new Error('User not found');
+  }
+
+  async create(
+    cameraData: Partial<Camera>,
+    customerId: string,
+  ): Promise<Camera> {
+    const customer = await this.customerRepository.findOne({
+      where: { id: customerId },
+    });
+    if (!customer) {
+      throw new Error('Customer not found');
     }
     const camera = this.cameraRepository.create({
       ...cameraData,
-      customer: user,
+      customer: customer,
     });
     return this.cameraRepository.save(camera);
   }

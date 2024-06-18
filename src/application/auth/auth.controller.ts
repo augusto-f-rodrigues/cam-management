@@ -8,8 +8,8 @@ export class AuthController {
 
   @Post()
   async auth(@Body() payload: Partial<Customer>): Promise<{ token: string }> {
-    const authUser = await this.authService.authUser(payload.name);
-    const token = await this.authService.generateToken(authUser);
+    const authCustomer = await this.authService.authCustomer(payload.name);
+    const token = await this.authService.generateToken(authCustomer);
     return { token };
   }
 }

@@ -12,7 +12,7 @@ export class AuthService {
     private customerRepository: Repository<Customer>,
   ) {}
 
-  async authUser(username: string): Promise<Customer> {
+  async authCustomer(username: string): Promise<Customer> {
     const customer = await this.customerRepository.findOne({
       where: { name: username },
     });
