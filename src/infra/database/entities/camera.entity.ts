@@ -31,5 +31,5 @@ export class Camera {
   customerId: string;
 
   @OneToMany(() => AlertLog, (alertLog) => alertLog.camera)
-  alertLogs: AlertLog[];
+  alertLogs?: AlertLog[];
 }

@@ -6,9 +6,9 @@ export class Customer {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ length: 126 })
+  @Column({ length: 126, unique: true })
   name: string;
 
   @OneToMany(() => Camera, (camera) => camera.customer)
-  cameras: Camera[];
+  cameras?: Camera[];
 }

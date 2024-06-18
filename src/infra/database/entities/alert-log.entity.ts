@@ -21,7 +21,7 @@ export class AlertLog {
 
   @ManyToOne(() => Camera, (camera) => camera.alertLogs)
   @JoinColumn({ name: 'camera_id' })
-  camera: Camera;
+  camera?: Camera;
 
   @Column({ name: 'camera_id', type: 'uuid' })
   cameraId: string;
