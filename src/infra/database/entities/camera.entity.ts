@@ -25,7 +25,7 @@ export class Camera {
 
   @ManyToOne(() => Customer, (customer) => customer.cameras)
   @JoinColumn({ name: 'customer_id' })
-  customer: Customer;
+  customer?: Customer;
 
   @Column({ name: 'customer_id', type: 'uuid' })
   customerId: string;

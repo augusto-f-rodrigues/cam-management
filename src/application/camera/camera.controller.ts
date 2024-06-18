@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Request,
   UseGuards,
 } from '@nestjs/common';
 import { Camera } from 'src/infra/database/entities/camera.entity';
@@ -28,8 +29,12 @@ export class CameraController {
   }
 
   @Post()
-  async create(@Body() cameraData: Partial<Camera>): Promise<Camera> {
-    return this.cameraService.create(cameraData);
+  async create(
+    @Body() cameraData: Partial<Camera>,
+    @Request() req,
+  ): Promise<Camera> {
+    const userId = req.user.id;
+    return this.cameraService.create(cameraData, userId);
   }
 
   @Put(':id')
