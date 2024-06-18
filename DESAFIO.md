@@ -11,7 +11,7 @@ Implementar uma API web, utilizando o padrão REST, para gerenciamento de câmer
 - Desabilitar uma câmera [edit: OK]
 - Listar as câmeras de um cliente [edit: OK]
 - Registrar ocorrência de alertas [edit: OK]
-- Obter ocorrências de alertas por intervalo de tempo
+- Obter ocorrências de alertas por intervalo de tempo [edit: OK]
 
 #### Regras de Negócio
 
@@ -62,7 +62,7 @@ Com exceção das regras de negócios citadas no Desafio, nenhum erro precisa de
 - Qualquer engine de banco de dados relacional é permitida.
 - Somente deve ser possível ter acessos aos recursos na API de maneira autenticada.
 - Deve ser possível recriar a base de dados automaticamente.
-- Datas precisam ser armazenadas no formato UTC.
+- Datas precisam ser armazenadas no formato UTC. [edit: OK]
 - Deve ser possível executar a API a partir de um script ou comando.
 
 

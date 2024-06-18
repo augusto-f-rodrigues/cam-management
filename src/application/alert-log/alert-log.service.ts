@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AlertLog } from 'src/infra/database/entities/alert-log.entity';
-import { Repository } from 'typeorm';
+import { Between, Repository } from 'typeorm';
 
 @Injectable()
 export class AlertLogService {
@@ -30,5 +30,16 @@ export class AlertLogService {
 
   async remove(id: string): Promise<void> {
     await this.alertLogRepository.delete(id);
+  }
+
+  async findByTimeInterval(
+    startTime: Date,
+    endTime: Date,
+  ): Promise<AlertLog[]> {
+    return this.alertLogRepository.find({
+      where: {
+        occurredAt: Between(startTime, endTime),
+      },
+    });
   }
 }

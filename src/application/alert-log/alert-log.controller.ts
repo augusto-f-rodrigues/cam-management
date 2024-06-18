@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guard/auth.guard';
@@ -20,6 +21,16 @@ export class AlertLogController {
   @Get()
   async findAll(): Promise<AlertLog[]> {
     return this.alertLogService.findAll();
+  }
+
+  @Get('interval')
+  async findByTimeInterval(
+    @Query('startTime') startTime: string,
+    @Query('endTime') endTime: string,
+  ): Promise<AlertLog[]> {
+    const start = new Date(startTime);
+    const end = new Date(endTime);
+    return this.alertLogService.findByTimeInterval(start, end);
   }
 
   @Get(':id')
