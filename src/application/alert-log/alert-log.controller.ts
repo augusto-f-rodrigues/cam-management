@@ -12,6 +12,7 @@ import {
 import { JwtAuthGuard } from '../auth/guard/auth.guard';
 import { AlertLogService } from './alert-log.service';
 import { AlertLog } from 'src/infra/database/entities/alert-log.entity';
+import { CreateAlertLog } from './dto/create-alert-log.dto';
 
 @Controller('alert-log')
 @UseGuards(JwtAuthGuard)
@@ -39,14 +40,14 @@ export class AlertLogController {
   }
 
   @Post()
-  async create(@Body() alertLogData: Partial<AlertLog>): Promise<AlertLog> {
+  async create(@Body() alertLogData: CreateAlertLog): Promise<AlertLog> {
     return this.alertLogService.create(alertLogData);
   }
 
   @Put(':id')
   async update(
     @Param('id') id: string,
-    @Body() alertLogData: Partial<AlertLog>,
+    @Body() alertLogData: CreateAlertLog,
   ): Promise<AlertLog> {
     return this.alertLogService.update(id, alertLogData);
   }

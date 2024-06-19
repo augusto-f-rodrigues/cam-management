@@ -11,6 +11,7 @@ import {
 import { Customer } from 'src/infra/database/entities/customer.entity';
 import { JwtAuthGuard } from '../auth/guard/auth.guard';
 import { CustomerService } from './customer.service';
+import { CreateCustomerDto } from './dto/create-camera.dto';
 
 @Controller('customer')
 export class CustomerController {
@@ -29,7 +30,7 @@ export class CustomerController {
   }
 
   @Post()
-  async create(@Body() customerData: Partial<Customer>): Promise<Customer> {
+  async create(@Body() customerData: CreateCustomerDto): Promise<Customer> {
     return this.customerService.create(customerData);
   }
 
@@ -37,7 +38,7 @@ export class CustomerController {
   @UseGuards(JwtAuthGuard)
   async update(
     @Param('id') id: string,
-    @Body() customerData: Partial<Customer>,
+    @Body() customerData: CreateCustomerDto,
   ): Promise<Customer> {
     return this.customerService.update(id, customerData);
   }

@@ -1,6 +1,8 @@
 
 ![Logo](gabriel_logo.png)
 
+**Marcações como por exemplo: [edit: OK] são edições no documento feitas por mim para indicar observações ou pontos realizados do desafio** 
+<hr/>
 A Gabriel é uma startup focada em proteger pessoas. Com isso, buscamos talentos capazes de construir sistemas com foco em segurança e escalabilidade. Para descobrir se você é o próximo talento a integrar o nosso time, queremos propor o desafio a seguir.
 
 #### Desafio
@@ -15,10 +17,10 @@ Implementar uma API web, utilizando o padrão REST, para gerenciamento de câmer
 
 #### Regras de Negócio
 
-- Não é permitida mais de uma câmera com mesmo IP por cliente
-- Não há máscara de rede, porém o formato do IP precisa ser válido
-- Uma câmera está obrigatoriamente associada a um único cliente
-- Um alerta está obrigatoriamente associado a uma única câmera
+- Não é permitida mais de uma câmera com mesmo IP por cliente [edit: OK]
+- Não há máscara de rede, porém o formato do IP precisa ser válido [edit: OK]
+- Uma câmera está obrigatoriamente associada a um único cliente [edit: OK]
+- Um alerta está obrigatoriamente associado a uma única câmera [edit: OK]
 
 
 ```mermaid
@@ -58,12 +60,12 @@ Com exceção das regras de negócios citadas no Desafio, nenhum erro precisa de
 
 #### Requisitos Técnicos
 
-- Não há restrição quanto a framework/linguagem.
-- Qualquer engine de banco de dados relacional é permitida.
-- Somente deve ser possível ter acessos aos recursos na API de maneira autenticada.
+- Não há restrição quanto a framework/linguagem. [edit: NestJS]
+- Qualquer engine de banco de dados relacional é permitida. [edit: Postgres]
+- Somente deve ser possível ter acessos aos recursos na API de maneira autenticada. [edit: JWT através do endpoint \auth ]
 - Deve ser possível recriar a base de dados automaticamente.
 - Datas precisam ser armazenadas no formato UTC. [edit: OK]
-- Deve ser possível executar a API a partir de um script ou comando.
+- Deve ser possível executar a API a partir de um script ou comando. [edit: scripts padrões informados através do package.json]
 
 
 #### Dicas e Sugestões
