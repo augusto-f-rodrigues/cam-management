@@ -22,8 +22,8 @@ export class AlertLogService {
 
     const queryBuilder = this.alertLogRepository
       .createQueryBuilder('alertLog')
-      .leftJoinAndSelect('alertLog.camera', 'camera')
-      .leftJoinAndSelect('camera.customer', 'customer');
+      .leftJoin('alertLog.camera', 'camera')
+      .leftJoin('camera.customer', 'customer');
 
     if (customerId) {
       queryBuilder.andWhere('customer.id = :customerId', { customerId });
