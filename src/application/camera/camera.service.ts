@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Camera } from 'src/infra/database/entities/camera.entity';
 import { Customer } from 'src/infra/database/entities/customer.entity';
@@ -34,9 +34,21 @@ export class CameraService {
     const customer = await this.customerRepository.findOne({
       where: { id: customerId },
     });
+
     if (!customer) {
-      throw new Error('Customer not found');
+      throw new ConflictException('Customer not found');
     }
+
+    const existingCamera = await this.cameraRepository.findOne({
+      where: { ip: cameraData.ip, customerId: cameraData.customerId },
+    });
+
+    if (existingCamera) {
+      throw new ConflictException(
+        'A camera with this IP already exists for this customer.',
+      );
+    }
+
     const camera = this.cameraRepository.create({
       ...cameraData,
       customer: customer,
