@@ -15,6 +15,7 @@ import { Camera } from 'src/infra/database/entities/camera.entity';
 import { JwtAuthGuard } from '../auth/guard/auth.guard';
 import { CameraService } from './camera.service';
 import { CreateCameraDto } from './dto/create-camera.dto';
+import { GetCameraDto } from './dto/get-camera.dto';
 
 @Controller('camera')
 @UseGuards(JwtAuthGuard)
@@ -22,8 +23,9 @@ export class CameraController {
   constructor(private readonly cameraService: CameraService) {}
 
   @Get()
-  async findAll(@Query('isEnabled') isEnabled: boolean): Promise<Camera[]> {
-    return this.cameraService.findAll(isEnabled);
+  async findAll(@Query() query: GetCameraDto): Promise<Camera[]> {
+    const { customerId, isEnabled } = query;
+    return this.cameraService.findAll(customerId, isEnabled);
   }
 
   @Get(':id')

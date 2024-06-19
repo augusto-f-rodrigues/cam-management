@@ -14,11 +14,24 @@ export class CameraService {
     private readonly customerRepository: Repository<Customer>,
   ) {}
 
-  async findAll(isEnabled?: boolean): Promise<Camera[]> {
+  async findAll(customerId?: string, isEnabled?: boolean): Promise<Camera[]> {
     if (isEnabled === undefined || isEnabled === null) {
       return this.cameraRepository.find();
     }
-    return this.cameraRepository.find({ where: { isEnabled: isEnabled } });
+
+    const queryBuilder = this.cameraRepository
+      .createQueryBuilder('camera')
+      .leftJoin('camera.customer', 'customer');
+
+    if (customerId) {
+      queryBuilder.andWhere('customer.id = :customerId', { customerId });
+    }
+
+    if (isEnabled) {
+      queryBuilder.andWhere('camera.isEnabled = :isEnabled', { isEnabled });
+    }
+
+    return queryBuilder.getMany();
   }
 
   async findOne(id: string): Promise<Camera> {
