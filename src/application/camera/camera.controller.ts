@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
   Put,
+  Query,
   Request,
   UseGuards,
 } from '@nestjs/common';
@@ -21,8 +22,8 @@ export class CameraController {
   constructor(private readonly cameraService: CameraService) {}
 
   @Get()
-  async findAll(): Promise<Camera[]> {
-    return this.cameraService.findAll();
+  async findAll(@Query('isEnabled') isEnabled: boolean): Promise<Camera[]> {
+    return this.cameraService.findAll(isEnabled);
   }
 
   @Get(':id')

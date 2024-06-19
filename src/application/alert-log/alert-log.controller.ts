@@ -12,7 +12,8 @@ import {
 import { JwtAuthGuard } from '../auth/guard/auth.guard';
 import { AlertLogService } from './alert-log.service';
 import { AlertLog } from 'src/infra/database/entities/alert-log.entity';
-import { CreateAlertLog } from './dto/create-alert-log.dto';
+import { CreateAlertLogDto } from './dto/create-alert-log.dto';
+import { GetAlertLogsDto } from './dto/get-alert-log.dto';
 
 @Controller('alert-log')
 @UseGuards(JwtAuthGuard)
@@ -20,18 +21,9 @@ export class AlertLogController {
   constructor(private readonly alertLogService: AlertLogService) {}
 
   @Get()
-  async findAll(): Promise<AlertLog[]> {
-    return this.alertLogService.findAll();
-  }
-
-  @Get('interval')
-  async findByTimeInterval(
-    @Query('startTime') startTime: string,
-    @Query('endTime') endTime: string,
-  ): Promise<AlertLog[]> {
-    const start = new Date(startTime);
-    const end = new Date(endTime);
-    return this.alertLogService.findByTimeInterval(start, end);
+  async findAll(@Query() query: GetAlertLogsDto): Promise<AlertLog[]> {
+    const { customerId, startDate, endDate } = query;
+    return this.alertLogService.findAll(customerId, startDate, endDate);
   }
 
   @Get(':id')
@@ -40,14 +32,14 @@ export class AlertLogController {
   }
 
   @Post()
-  async create(@Body() alertLogData: CreateAlertLog): Promise<AlertLog> {
+  async create(@Body() alertLogData: CreateAlertLogDto): Promise<AlertLog> {
     return this.alertLogService.create(alertLogData);
   }
 
   @Put(':id')
   async update(
     @Param('id') id: string,
-    @Body() alertLogData: CreateAlertLog,
+    @Body() alertLogData: CreateAlertLogDto,
   ): Promise<AlertLog> {
     return this.alertLogService.update(id, alertLogData);
   }

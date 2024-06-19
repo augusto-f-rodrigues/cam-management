@@ -48,7 +48,7 @@ erDiagram
 
 #### Critérios de Aceitação
 
-- Deve ser possível filtrar câmeras por estado (hab./desabilitada)
+- Deve ser possível filtrar câmeras por estado (hab./desabilitada) [edit: OK]
 - Deve ser possível filtrar as ocorrências de alerta: 
 	- Por cliente
 	- Por intervalo de tempo válido

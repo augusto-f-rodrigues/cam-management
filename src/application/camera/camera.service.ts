@@ -14,8 +14,11 @@ export class CameraService {
     private readonly customerRepository: Repository<Customer>,
   ) {}
 
-  async findAll(): Promise<Camera[]> {
-    return this.cameraRepository.find();
+  async findAll(isEnabled?: boolean): Promise<Camera[]> {
+    if (isEnabled === undefined || isEnabled === null) {
+      return this.cameraRepository.find();
+    }
+    return this.cameraRepository.find({ where: { isEnabled: isEnabled } });
   }
 
   async findOne(id: string): Promise<Camera> {

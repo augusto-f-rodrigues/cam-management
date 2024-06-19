@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AlertLog } from 'src/infra/database/entities/alert-log.entity';
-import { Between, Repository } from 'typeorm';
-import { CreateAlertLog } from './dto/create-alert-log.dto';
+import { Repository } from 'typeorm';
+import { CreateAlertLogDto } from './dto/create-alert-log.dto';
 
 @Injectable()
 export class AlertLogService {
@@ -11,36 +11,56 @@ export class AlertLogService {
     private readonly alertLogRepository: Repository<AlertLog>,
   ) {}
 
-  async findAll(): Promise<AlertLog[]> {
-    return this.alertLogRepository.find();
+  async findAll(
+    customerId?: string,
+    startDate?: string,
+    endDate?: string,
+  ): Promise<AlertLog[]> {
+    if (startDate && endDate && new Date(endDate) < new Date(startDate)) {
+      throw new ConflictException('End date cannot be earlier than start date');
+    }
+
+    const queryBuilder = this.alertLogRepository.createQueryBuilder('alertLog');
+
+    if (customerId) {
+      queryBuilder.andWhere('alertLog.customerId = :customerId', {
+        customerId,
+      });
+    }
+
+    if (startDate) {
+      queryBuilder.andWhere('alertLog.occurredAt >= :startDate', { startDate });
+    }
+
+    if (endDate) {
+      queryBuilder.andWhere('alertLog.occurredAt <= :endDate', { endDate });
+    }
+
+    if (!startDate && !endDate) {
+      const today = new Date().toISOString().split('T')[0];
+      queryBuilder.andWhere('alertLog.occurredAt >= :today', {
+        today: `${today}T00:00:00.000Z`,
+      });
+    }
+
+    return queryBuilder.getMany();
   }
 
   async findOne(id: string): Promise<AlertLog> {
     return this.alertLogRepository.findOne({ where: { id } });
   }
 
-  async create(alertLogData: CreateAlertLog): Promise<AlertLog> {
+  async create(alertLogData: CreateAlertLogDto): Promise<AlertLog> {
     const alertLog = this.alertLogRepository.create(alertLogData);
     return this.alertLogRepository.save(alertLog);
   }
 
-  async update(id: string, alertLogData: CreateAlertLog): Promise<AlertLog> {
+  async update(id: string, alertLogData: CreateAlertLogDto): Promise<AlertLog> {
     await this.alertLogRepository.update(id, alertLogData);
     return this.alertLogRepository.findOne({ where: { id } });
   }
 
   async remove(id: string): Promise<void> {
     await this.alertLogRepository.delete(id);
-  }
-
-  async findByTimeInterval(
-    startTime: Date,
-    endTime: Date,
-  ): Promise<AlertLog[]> {
-    return this.alertLogRepository.find({
-      where: {
-        occurredAt: Between(startTime, endTime),
-      },
-    });
   }
 }
