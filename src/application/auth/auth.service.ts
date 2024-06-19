@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Customer } from 'src/infra/database/entities/customer.entity';
@@ -13,6 +13,9 @@ export class AuthService {
   ) {}
 
   async authCustomer(username: string): Promise<Customer> {
+    if (!username) {
+      throw new ConflictException('Token expired or invalid');
+    }
     const customer = await this.customerRepository.findOne({
       where: { name: username },
     });
