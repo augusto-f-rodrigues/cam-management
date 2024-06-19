@@ -64,4 +64,9 @@ export class CameraController {
   async disable(@Param('id') id: string): Promise<Camera> {
     return this.cameraService.disable(id);
   }
+
+  @Patch(':id/enable')
+  async enable(@Param('id') id: string): Promise<Camera> {
+    return this.cameraService.enable(id);
+  }
 }

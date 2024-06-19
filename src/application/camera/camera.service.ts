@@ -93,4 +93,13 @@ export class CameraService {
     camera.isEnabled = false;
     return this.cameraRepository.save(camera);
   }
+
+  async enable(id: string): Promise<Camera> {
+    const camera = await this.cameraRepository.findOne({ where: { id } });
+    if (!camera) {
+      throw new Error('Camera not found');
+    }
+    camera.isEnabled = true;
+    return this.cameraRepository.save(camera);
+  }
 }
