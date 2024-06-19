@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Camera } from 'src/infra/database/entities/camera.entity';
 import { Customer } from 'src/infra/database/entities/customer.entity';
 import { Repository } from 'typeorm';
+import { CreateCameraDto } from './dto/create-camera.dto';
 
 @Injectable()
 export class CameraService {
@@ -28,7 +29,7 @@ export class CameraService {
   }
 
   async create(
-    cameraData: Partial<Camera>,
+    cameraData: CreateCameraDto,
     customerId: string,
   ): Promise<Camera> {
     const customer = await this.customerRepository.findOne({
@@ -40,7 +41,7 @@ export class CameraService {
     }
 
     const existingCamera = await this.cameraRepository.findOne({
-      where: { ip: cameraData.ip, customerId: cameraData.customerId },
+      where: { ip: cameraData.ip, customerId: customerId },
     });
 
     if (existingCamera) {
@@ -56,7 +57,10 @@ export class CameraService {
     return this.cameraRepository.save(camera);
   }
 
-  async update(id: string, cameraData: Partial<Camera>): Promise<Camera> {
+  async update(
+    id: string,
+    cameraData: Partial<CreateCameraDto>,
+  ): Promise<Camera> {
     await this.cameraRepository.update(id, cameraData);
     return this.cameraRepository.findOne({ where: { id } });
   }

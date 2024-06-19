@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 import { Customer } from './customer.entity';
 import { AlertLog } from './alert-log.entity';
+import { IsIpFormat } from 'src/application/decorators/ip.decorator';
 
 @Entity('cameras')
 export class Camera {
@@ -18,6 +19,9 @@ export class Camera {
   name: string;
 
   @Column({ length: 126 })
+  @IsIpFormat({
+    message: 'IP address must be in the format of 0.0.0.0 to 255.255.255.255',
+  })
   ip: string;
 
   @Column({ name: 'is_enabled', default: true })
