@@ -20,12 +20,13 @@ export class AlertLogService {
       throw new ConflictException('End date cannot be earlier than start date');
     }
 
-    const queryBuilder = this.alertLogRepository.createQueryBuilder('alertLog');
+    const queryBuilder = this.alertLogRepository
+      .createQueryBuilder('alertLog')
+      .leftJoinAndSelect('alertLog.camera', 'camera')
+      .leftJoinAndSelect('camera.customer', 'customer');
 
     if (customerId) {
-      queryBuilder.andWhere('alertLog.customerId = :customerId', {
-        customerId,
-      });
+      queryBuilder.andWhere('customer.id = :customerId', { customerId });
     }
 
     if (startDate) {
