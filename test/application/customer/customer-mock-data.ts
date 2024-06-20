@@ -20,3 +20,12 @@ export const customerServiceMock = {
   update: jest.fn().mockResolvedValue(customerMock[2]),
   remove: jest.fn().mockResolvedValue(undefined),
 };
+
+export const customerEntityMock = {
+  find: jest.fn().mockResolvedValue(customerMock),
+  findOne: jest.fn().mockResolvedValue(customerMock[0]),
+  create: jest.fn().mockReturnValue(customerMock[1]),
+  save: jest.fn().mockResolvedValue(customerMock[1]),
+  update: jest.fn().mockResolvedValue(undefined),
+  delete: jest.fn().mockResolvedValue(undefined),
+};

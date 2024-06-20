@@ -23,3 +23,25 @@ export const alertLogServiceMock = {
   update: jest.fn().mockResolvedValue(alertLogMock[2]),
   remove: jest.fn().mockResolvedValue(undefined),
 };
+
+export const alertLogQueryBuilderMock = {
+  leftJoin: jest.fn().mockReturnThis(),
+  andWhere: jest.fn().mockReturnThis(),
+  getMany: jest.fn().mockResolvedValue(alertLogMock),
+  andWhereCalls: [],
+};
+
+alertLogQueryBuilderMock.andWhere.mockImplementation(function (query, params) {
+  alertLogQueryBuilderMock.andWhereCalls.push({ query, params });
+  return this;
+});
+
+export const alertLogEntityMock = {
+  find: jest.fn().mockResolvedValue(alertLogMock),
+  findOne: jest.fn().mockResolvedValue(alertLogMock[0]),
+  create: jest.fn().mockReturnValue(alertLogMock[1]),
+  save: jest.fn().mockResolvedValue(alertLogMock[1]),
+  update: jest.fn().mockResolvedValue(alertLogMock[2]),
+  delete: jest.fn().mockResolvedValue(undefined),
+  createQueryBuilder: jest.fn().mockReturnValue(alertLogQueryBuilderMock),
+};
