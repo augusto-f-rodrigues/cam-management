@@ -21,7 +21,7 @@
 - [Testes Unitários](#testes-unitários)
 - [Scripts de execução padrão](#scripts-de-execução-padrão)
 
-## Observações Importantes (não deixar de ler)
+## Observações Importantes (não deixe de ler)
 
 README principal (esse que está lendo agora) dedicado para instruções de setup, para conferir as regras de negócio, formas de utilização e informações gerais sobre o projeto conferir o DESAFIO.md que está nesse mesmo repositório.<br/>
 
