@@ -39,7 +39,7 @@ export class AlertLogService {
 
     if (!startDate && !endDate) {
       const today = new Date().toISOString().split('T')[0];
-      queryBuilder.andWhere('alertLog.occurredAt >= :today', {
+      queryBuilder.andWhere('alertLog.occurredAt = :today', {
         today: `${today}T00:00:00.000Z`,
       });
     }
