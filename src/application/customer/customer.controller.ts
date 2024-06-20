@@ -8,7 +8,7 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import { Customer } from 'src/infra/database/entities/customer.entity';
+import { Customer } from '@/infra/database/entities/customer.entity';
 import { JwtAuthGuard } from '../auth/guard/auth.guard';
 import { CustomerService } from './customer.service';
 import { CreateCustomerDto } from './dto/create-camera.dto';

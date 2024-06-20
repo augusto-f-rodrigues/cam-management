@@ -11,7 +11,7 @@ import {
   Request,
   UseGuards,
 } from '@nestjs/common';
-import { Camera } from 'src/infra/database/entities/camera.entity';
+import { Camera } from '@/infra/database/entities/camera.entity';
 import { JwtAuthGuard } from '../auth/guard/auth.guard';
 import { CameraService } from './camera.service';
 import { CreateCameraDto } from './dto/create-camera.dto';

@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { Customer } from 'src/infra/database/entities/customer.entity';
+import { Customer } from '@/infra/database/entities/customer.entity';
 import { AuthService } from './auth.service';
 
 @Controller('auth')

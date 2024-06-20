@@ -5,7 +5,7 @@ import { JwtStrategy } from './jwt.strategy';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Customer } from 'src/infra/database/entities/customer.entity';
+import { Customer } from '@/infra/database/entities/customer.entity';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({

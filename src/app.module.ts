@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { AlertLogModule } from './application/alert-log/alert-log.module';
 import { CameraModule } from './application/camera/camera.module';
 import { AuthModule } from './application/auth/auth.module';

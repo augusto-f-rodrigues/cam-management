@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { IsISO8601 } from 'class-validator';
 
 export class CreateAlertLogDto {

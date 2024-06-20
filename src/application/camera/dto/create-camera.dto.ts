@@ -1,5 +1,5 @@
 import { IsString } from 'class-validator';
-import { IsIpFormat } from 'src/application/decorators/ip.decorator';
+import { IsIpFormat } from '@/application/decorators/ip.decorator';
 
 export class CreateCameraDto {
   @IsString()

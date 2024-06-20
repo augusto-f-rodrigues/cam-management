@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guard/auth.guard';
 import { AlertLogService } from './alert-log.service';
-import { AlertLog } from 'src/infra/database/entities/alert-log.entity';
+import { AlertLog } from '@/infra/database/entities/alert-log.entity';
 import { CreateAlertLogDto } from './dto/create-alert-log.dto';
 import { GetAlertLogsDto } from './dto/get-alert-log.dto';
 

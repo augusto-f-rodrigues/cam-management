@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { Customer } from './customer.entity';
 import { AlertLog } from './alert-log.entity';
-import { IsIpFormat } from 'src/application/decorators/ip.decorator';
+import { IsIpFormat } from '@/application/decorators/ip.decorator';
 
 @Entity('cameras')
 export class Camera {

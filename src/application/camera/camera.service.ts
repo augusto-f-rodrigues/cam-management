@@ -1,7 +1,7 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Camera } from 'src/infra/database/entities/camera.entity';
-import { Customer } from 'src/infra/database/entities/customer.entity';
+import { Camera } from '@/infra/database/entities/camera.entity';
+import { Customer } from '@/infra/database/entities/customer.entity';
 import { Repository } from 'typeorm';
 import { CreateCameraDto } from './dto/create-camera.dto';
 

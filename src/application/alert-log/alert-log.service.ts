@@ -1,6 +1,6 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AlertLog } from 'src/infra/database/entities/alert-log.entity';
+import { AlertLog } from '@/infra/database/entities/alert-log.entity';
 import { Repository } from 'typeorm';
 import { CreateAlertLogDto } from './dto/create-alert-log.dto';
 
