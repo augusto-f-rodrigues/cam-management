@@ -10,6 +10,7 @@ import {
   alertLogMock,
   alertLogQueryBuilderMock,
 } from './alert-log-mock-data';
+import { UpdateAlertLogDto } from '@/application/alert-log/dto/update-alert-log.dto';
 
 describe('AlertLogService', () => {
   let alertLogService: AlertLogService;
@@ -95,6 +96,7 @@ describe('AlertLogService', () => {
     it('Should create and return a new alert log', async () => {
       const createAlertLogDto: CreateAlertLogDto = {
         occurredAt: new Date('2024-06-18'),
+        cameraId: 'bc4aed48-5ae0-494c-b2c0-e986efc4cad3',
       };
       const result = await alertLogService.create(createAlertLogDto);
       expect(result).toEqual(alertLogMock[1]);
@@ -105,7 +107,7 @@ describe('AlertLogService', () => {
 
   describe('update', () => {
     it('Should update and return an existing alert log', async () => {
-      const updateAlertLogDto: CreateAlertLogDto = {
+      const updateAlertLogDto: UpdateAlertLogDto = {
         occurredAt: new Date('2024-06-20'),
       };
       const result = await alertLogService.update(

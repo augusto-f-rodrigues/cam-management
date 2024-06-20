@@ -4,10 +4,10 @@ import { IsIpFormat } from '@/application/decorators/ip.decorator';
 export class UpdateCameraDto {
   @IsString()
   @IsOptional()
-  name: string;
+  name?: string;
 
   @IsString()
   @IsIpFormat()
   @IsOptional()
-  ip: string;
+  ip?: string;
 }

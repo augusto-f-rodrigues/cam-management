@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { AlertLog } from '@/infra/database/entities/alert-log.entity';
 import { Repository } from 'typeorm';
 import { CreateAlertLogDto } from './dto/create-alert-log.dto';
+import { UpdateAlertLogDto } from './dto/update-alert-log.dto';
 
 @Injectable()
 export class AlertLogService {
@@ -56,7 +57,7 @@ export class AlertLogService {
     return this.alertLogRepository.save(alertLog);
   }
 
-  async update(id: string, alertLogData: CreateAlertLogDto): Promise<AlertLog> {
+  async update(id: string, alertLogData: UpdateAlertLogDto): Promise<AlertLog> {
     await this.alertLogRepository.update(id, alertLogData);
     return this.alertLogRepository.findOne({ where: { id } });
   }

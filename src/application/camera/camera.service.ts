@@ -4,6 +4,7 @@ import { Camera } from '@/infra/database/entities/camera.entity';
 import { Customer } from '@/infra/database/entities/customer.entity';
 import { Repository } from 'typeorm';
 import { CreateCameraDto } from './dto/create-camera.dto';
+import { UpdateCameraDto } from './dto/update-camera.dto';
 
 @Injectable()
 export class CameraService {
@@ -69,10 +70,7 @@ export class CameraService {
     return this.cameraRepository.save(camera);
   }
 
-  async update(
-    id: string,
-    cameraData: Partial<CreateCameraDto>,
-  ): Promise<Camera> {
+  async update(id: string, cameraData: UpdateCameraDto): Promise<Camera> {
     await this.cameraRepository.update(id, cameraData);
     return this.cameraRepository.findOne({ where: { id } });
   }

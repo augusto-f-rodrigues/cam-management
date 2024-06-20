@@ -51,7 +51,7 @@ describe('CameraService', () => {
     it('Should return an array of cameras', async () => {
       const result = await cameraService.findAll();
       expect(result).toEqual(cameraMock);
-      expect(cameraRepo.find).toHaveBeenCalled();
+      expect(cameraQueryBuilderMock.getMany).toHaveBeenCalled();
     });
 
     it('Should return an array of cameras filtered by customerId and isEnabled', async () => {
