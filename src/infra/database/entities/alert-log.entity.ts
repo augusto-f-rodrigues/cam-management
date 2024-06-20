@@ -19,7 +19,9 @@ export class AlertLog {
   })
   occurredAt: Date;
 
-  @ManyToOne(() => Camera, (camera) => camera.alertLogs)
+  @ManyToOne(() => Camera, (camera) => camera.alertLogs, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'camera_id' })
   camera?: Camera;
 

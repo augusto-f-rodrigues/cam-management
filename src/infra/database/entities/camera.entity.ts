@@ -27,13 +27,17 @@ export class Camera {
   @Column({ name: 'is_enabled', default: true })
   isEnabled: boolean;
 
-  @ManyToOne(() => Customer, (customer) => customer.cameras)
+  @ManyToOne(() => Customer, (customer) => customer.cameras, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'customer_id' })
   customer?: Customer;
 
   @Column({ name: 'customer_id', type: 'uuid' })
   customerId: string;
 
-  @OneToMany(() => AlertLog, (alertLog) => alertLog.camera)
+  @OneToMany(() => AlertLog, (alertLog) => alertLog.camera, {
+    onDelete: 'CASCADE',
+  })
   alertLogs?: AlertLog[];
 }
