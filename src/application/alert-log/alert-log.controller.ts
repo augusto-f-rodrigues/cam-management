@@ -14,6 +14,7 @@ import { AlertLogService } from './alert-log.service';
 import { AlertLog } from '@/infra/database/entities/alert-log.entity';
 import { CreateAlertLogDto } from './dto/create-alert-log.dto';
 import { GetAlertLogsDto } from './dto/get-alert-log.dto';
+import { UpdateAlertLogDto } from './dto/update-alert-log.dto';
 
 @Controller('alert-log')
 @UseGuards(JwtAuthGuard)
@@ -39,7 +40,7 @@ export class AlertLogController {
   @Put(':id')
   async update(
     @Param('id') id: string,
-    @Body() alertLogData: CreateAlertLogDto,
+    @Body() alertLogData: UpdateAlertLogDto,
   ): Promise<AlertLog> {
     return this.alertLogService.update(id, alertLogData);
   }

@@ -16,6 +16,7 @@ import { JwtAuthGuard } from '../auth/guard/auth.guard';
 import { CameraService } from './camera.service';
 import { CreateCameraDto } from './dto/create-camera.dto';
 import { GetCameraDto } from './dto/get-camera.dto';
+import { UpdateCameraDto } from './dto/update-camera.dto';
 
 @Controller('camera')
 @UseGuards(JwtAuthGuard)
@@ -50,7 +51,7 @@ export class CameraController {
   @Put(':id')
   async update(
     @Param('id') id: string,
-    @Body() cameraData: CreateCameraDto,
+    @Body() cameraData: UpdateCameraDto,
   ): Promise<Camera> {
     return this.cameraService.update(id, cameraData);
   }
