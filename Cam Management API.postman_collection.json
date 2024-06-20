@@ -1,0 +1,479 @@
+{
+	"info": {
+		"_postman_id": "70ca0fd7-bcab-4419-9ee5-9a8c4f35288a",
+		"name": "Cam Management API",
+		"description": "Collection for Customer API endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30368070",
+		"_collection_link": "https://universal-crater-371530.postman.co/workspace/Team-Workspace~6293c560-18d8-42b6-8411-47f44c7bed38/collection/30368070-70ca0fd7-bcab-4419-9ee5-9a8c4f35288a?action=share&source=collection_link&creator=30368070"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Get All Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customer",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customer/a598ae4b-824d-4377-b043-60cb31d5ac58",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer",
+								"a598ae4b-824d-4377-b043-60cb31d5ac58"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"oi\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customer",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Augusto F. Rodrigues Updated\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customer/a598ae4b-824d-4377-b043-60cb31d5ac58",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer",
+								"a598ae4b-824d-4377-b043-60cb31d5ac58"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customer/78c4490e-5bca-4b70-b7ef-fc1152c386c7",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer",
+								"78c4490e-5bca-4b70-b7ef-fc1152c386c7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Camera",
+			"item": [
+				{
+					"name": "Get All Cameras",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/camera",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"camera"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "8f7101c3-6ba0-4225-ab85-377470b618a4",
+									"disabled": true
+								},
+								{
+									"key": "isEnabled",
+									"value": "false",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Camera by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/camera/3e374066-5c62-4d91-befb-bf75ea2aae5d",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"camera",
+								"3e374066-5c62-4d91-befb-bf75ea2aae5d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Camera",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"camera1\",\n    \"ip\":\"0.0.0.130\",\n    \"isEnabled\": true    \n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/camera",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"camera"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Camera",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"camera-updated\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/camera/6b00e451-bdc7-4ba3-8e79-0fd2921b6aa7",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"camera",
+								"6b00e451-bdc7-4ba3-8e79-0fd2921b6aa7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Camera",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/camera/6b00e451-bdc7-4ba3-8e79-0fd2921b6aa7",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"camera",
+								"6b00e451-bdc7-4ba3-8e79-0fd2921b6aa7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Disable Camera",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/camera/bc4aed48-5ae0-494c-b2c0-e986efc4cad3/disable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"camera",
+								"bc4aed48-5ae0-494c-b2c0-e986efc4cad3",
+								"disable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enable Camera",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/camera/bc4aed48-5ae0-494c-b2c0-e986efc4cad3/enable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"camera",
+								"bc4aed48-5ae0-494c-b2c0-e986efc4cad3",
+								"enable"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Alert Logs",
+			"item": [
+				{
+					"name": "Get All Alert Logs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/alert-log?startDate=2024-06-10&endDate=2024-06-25",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"alert-log"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2024-06-10"
+								},
+								{
+									"key": "endDate",
+									"value": "2024-06-25"
+								},
+								{
+									"key": "customerId",
+									"value": "a598ae4b-824d-4377-b043-60cb31d5ac58",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Alert Logs by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/alert-log/214d2aea-e3e0-4bbc-8359-e2dc3ceb99b7",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"alert-log",
+								"214d2aea-e3e0-4bbc-8359-e2dc3ceb99b7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Alert Logs",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"occurredAt\": \"2024-06-16\",    \n    \"cameraId\": \"bc4aed48-5ae0-494c-b2c0-e986efc4cad3\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/alert-log",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"alert-log"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Alert Logs",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"occurredAt\": \"2024-06-20T00:00:00Z\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/alert-log/c6165067-c5b0-4eed-af94-02c7528a1e8e",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"alert-log",
+								"c6165067-c5b0-4eed-af94-02c7528a1e8e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Alert Logs",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/alert-log/d4c3e710-5b5a-4d7a-a9e2-3c7d29c0a8b3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"alert-log",
+								"d4c3e710-5b5a-4d7a-a9e2-3c7d29c0a8b3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Get Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Augusto F. Rodrigues\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkF1Z3VzdG8gRi4gUm9kcmlndWVzIiwic3ViIjoiYTU5OGFlNGItODI0ZC00Mzc3LWIwNDMtNjBjYjMxZDVhYzU4IiwiaWF0IjoxNzE4OTEzNzIwLCJleHAiOjE3MTg5MTczMjB9.IPh2mf3yx5CARnX-ZOc7idJy9pT0JMtvj8YOXh1I7uo",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000"
+		}
+	]
+}
