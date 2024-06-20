@@ -8,6 +8,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -28,7 +29,13 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_NAME'),
-        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        migrationsRun: true,
+        migrationsTableName: 'migrations_typeorm',
+        migrations: [join(__dirname, '**', '/migrations/*.{ts,js}')],
+        cli: {
+          migrationsDir: 'src/infra/database/migrations',
+        },
+        entities: [join(__dirname, '**', '*.entity.{ts,js}')],
         synchronize: true, //The synchronize option needs to be set to false in production.
         logging: true,
       }),
