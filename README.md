@@ -15,7 +15,7 @@
 
 ## Índice
 
-- [Observações Importante (não deixar de ler)](#observações-importante-não-deixe-de-ler)
+- [Observações Importante (não deixe de ler)](#observações-importantes-não-deixe-de-ler)
 - [Pré-requisitos](#pré-requisitos)
 - [Setup (com Docker)](#setup-com-docker)
 - [Testes Unitários](#testes-unitários)
@@ -25,7 +25,7 @@
 
 README principal (esse que está lendo agora) dedicado para instruções de setup, para conferir as regras de negócio, formas de utilização e informações gerais sobre o projeto conferir o DESAFIO.md que está nesse mesmo repositório.<br/>
 
-Para um setup mais ágil da aplicação utilize o Docker, no [Setup](#setup) é explicado como<br/>
+Para um setup mais ágil da aplicação utilize o Docker, no [Setup](#setup-com-docker) é explicado como<br/>
 
 Variáveis de ambiente (arquivo .env) <strong>não</strong> estão no .gitignore para <strong>facilitar</strong> o setup da aplicação, há um comentário no topo do arquivo .env
 
@@ -46,10 +46,16 @@ Faça o clone do repositório:
 git clone https://github.com/augusto-f-rodrigues/cam-management.git
 cd cam-management
 ```
+
 Com o docker <strong>aberto</strong> execute o comando:
 ```cmd
 docker compose up
 ```
+
+<strong>É NORMAL<strong/> e esperado que após o build do comando acima aparecer essas mensagens de erro pois ainda vamos configurar o server no pgAdmin: <br/><br/>
+![image](https://github.com/augusto-f-rodrigues/cam-management/assets/85464318/d33b6329-aff9-4764-9f30-8d32738005ca)
+
+
 Após finalizar o processo de build acesse em seu navegador:<br/>
 <a>localhost:5050</a> <br/>
 
