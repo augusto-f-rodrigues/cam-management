@@ -65,6 +65,9 @@ senha: pgadmin4
 
 No pgAdmin, aperte com o botão direito em 'Servers' que se encontra no canto superior esquerdo e selecione 'Register'>'Server...'<br/>
 
+![image](https://github.com/augusto-f-rodrigues/cam-management/assets/85464318/fa81ab04-14ad-4cf2-aaae-19e2384899cd)
+
+
 <strong>Configure exatamente como está abaixo:</strong><br/>
 
 Aba 'General':<br/>
