@@ -35,6 +35,10 @@ Importar a coleção do Postman que está no root do projeto para já ter todos 
 
 ![postman-auth](postman-auth.png)
 
+Notar que em alguns endpoints de GET podem ser aplicados filtros como no exemplo abaixo:<br/><br/>
+![image](https://github.com/augusto-f-rodrigues/cam-management/assets/85464318/ccd052a1-27ac-4986-9879-6978f55c588c)
+
+
 ## Pré-requisitos
 
 Certifique-se de ter o Node.js, npm instalados e para um setup mais ágil o Docker.
