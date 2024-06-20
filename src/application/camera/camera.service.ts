@@ -15,10 +15,6 @@ export class CameraService {
   ) {}
 
   async findAll(customerId?: string, isEnabled?: boolean): Promise<Camera[]> {
-    if (isEnabled === undefined || isEnabled === null) {
-      return this.cameraRepository.find();
-    }
-
     const queryBuilder = this.cameraRepository
       .createQueryBuilder('camera')
       .leftJoin('camera.customer', 'customer');
@@ -27,7 +23,7 @@ export class CameraService {
       queryBuilder.andWhere('customer.id = :customerId', { customerId });
     }
 
-    if (isEnabled) {
+    if (isEnabled !== undefined && isEnabled !== null) {
       queryBuilder.andWhere('camera.isEnabled = :isEnabled', { isEnabled });
     }
 
